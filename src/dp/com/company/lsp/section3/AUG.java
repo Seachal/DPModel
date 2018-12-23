@@ -8,6 +8,7 @@ package com.company.lsp.section3;
 public class AUG extends Rifle {
 	
 	//狙击枪都是携带一个精准的望远镜
+	@Override
 	public void zoomOut(){
 		System.out.println("通过望远镜观看敌人...");
 	}

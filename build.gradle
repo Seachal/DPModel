@@ -5,27 +5,28 @@ project.group = 'com.company'
 project.archivesBaseName = 'dp'
 project.version = '1.0.0'
 
-tasks.withType(Compile) { options.encoding = "UTF-8" }
+tasks.withType(JavaCompile) { options.encoding = "UTF-8" }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-	classifier = 'sources'
-	from sourceSets.main.allSource
+    classifier = 'sources'
+    from sourceSets.main.allSource
 }
 
 artifacts {
-	archives sourcesJar
+    archives sourcesJar
 }
 
 sourceSets.main.java.srcDirs = ['src/dp']
 
 dependencies {
-    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
-	compile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
+//	使用 gradle的 dom4j不好用，我下载了一个 dom4j.jar, 放在 lib 中，并在module dependencies 中+进去。就不报错了。
+//	implementation group: 'dom4j', name: 'dom4j', version: '1.6.1'
+    implementation group: 'javax.servlet', name: 'servlet-api', version: '2.5'
 }
 
 jar {
-	manifest {
-		attributes 'Implementation-Title': 'DPModel', 'Implementation-Version': 1.0.0
-	}
+    manifest {
+        attributes 'Implementation-Title': 'DPModel', 'Implementation-Version': 1.0
+    }
 }
 
